@@ -14,6 +14,9 @@ The end goal is to create an alternative offline kiosk check in experience to un
 - Realm Portal is where you ....
 - Schema matching is CRUCIAL. Can cause app to crash when attempting to open 'realm'
 - Each time schema changes, your realm app version on the app must be manually updated. Otherwise the app will crash when it attempts to sync as your property/types has changed
+- You can install external npm packages to Realm Functions
+- Realm Functions supports MOST but not all built-in Node modules
+- synchronously opening realm vs asynchronously opening realm
 
 ## Find out more about
 

@@ -66,16 +66,18 @@ export function CheckInView({spaceTitle}) {
         </View>
       )}
       {!isCheckInView && (
-        <FlatList
-          data={checkins}
-          renderItem={checkin => (
-            <CheckInItem
-              name={checkin.item.name}
-              date={checkin.item.checkinDate}
-            />
-          )}
-          keyExtractor={checkin => checkin.index}
-        />
+        <View style={{maxHeight: '80%'}}>
+          <FlatList
+            data={checkins}
+            renderItem={checkin => (
+              <CheckInItem
+                name={checkin.item.name}
+                date={checkin.item.checkinDate}
+              />
+            )}
+            keyExtractor={checkin => checkin._id.toString()}
+          />
+        </View>
       )}
       <Overlay isVisible={isOverlayVisible}>
         <View style={styles.overlay}>

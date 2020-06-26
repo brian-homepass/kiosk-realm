@@ -34,26 +34,27 @@ const CheckinsProvider = ({children, spaceId}) => {
     // success handler, e.g. because the component unmounted.
     let canceled = false;
 
-    Realm.open(config)
-      .then(openedRealm => {
-        console.log('Realm opened');
-        if (canceled) {
-          openedRealm.close();
-          return;
-        }
+    let openedRealm = new Realm(config);
+    // Realm.open(config)
+    //   .then(openedRealm => {
+    console.log('Realm opened');
+    if (canceled) {
+      openedRealm.close();
+      return;
+    }
 
-        realmRef.current = openedRealm;
+    realmRef.current = openedRealm;
 
-        const syncCheckins = openedRealm.objects('Checkin');
+    const syncCheckins = openedRealm.objects('Checkin');
 
-        openedRealm.addListener('change', () => {
-          setCheckins([...syncCheckins]);
-        });
+    openedRealm.addListener('change', () => {
+      setCheckins([...syncCheckins]);
+    });
 
-        // Set the tasks state variable and re-render.
-        setCheckins([...syncCheckins]);
-      })
-      .catch(error => console.warn('Failed to open realm:', error));
+    // Set the tasks state variable and re-render.
+    setCheckins([...syncCheckins]);
+    // })
+    // .catch(error => console.warn('Failed to open realm:', error));
 
     return () => {
       canceled = true;
