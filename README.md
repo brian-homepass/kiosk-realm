@@ -4,6 +4,10 @@ This is a PoC to recreate Homepass's kiosk check in experience using React Nativ
 
 The end goal is to create an alternative offline kiosk check in experience to understand the possibility of what MongoDB / Realm can offer
 
+## Presentation
+
+[Google Slides](https://docs.google.com/presentation/d/16aM2NUlPtI3Qk4Hi8bU1nYvcYYGrlrXfx5GweYEYBBM/edit?usp=sharing)
+
 ## Discoveries
 
 - In order to use Realm Sync, your Atlas cluster must use MongoDB version 4.4

@@ -30,18 +30,7 @@ const CheckinsProvider = ({children, spaceId}) => {
       } with config: ${JSON.stringify(config)}...`,
     );
 
-    // Set this flag to true if the cleanup handler runs before the realm open
-    // success handler, e.g. because the component unmounted.
-    let canceled = false;
-
     let openedRealm = new Realm(config);
-    // Realm.open(config)
-    //   .then(openedRealm => {
-    console.log('Realm opened');
-    if (canceled) {
-      openedRealm.close();
-      return;
-    }
 
     realmRef.current = openedRealm;
 
@@ -51,14 +40,9 @@ const CheckinsProvider = ({children, spaceId}) => {
       setCheckins([...syncCheckins]);
     });
 
-    // Set the tasks state variable and re-render.
     setCheckins([...syncCheckins]);
-    // })
-    // .catch(error => console.warn('Failed to open realm:', error));
 
     return () => {
-      canceled = true;
-
       const realm = realmRef.current;
       if (realm != null) {
         realm.removeAllListeners();
@@ -90,7 +74,6 @@ const CheckinsProvider = ({children, spaceId}) => {
       value={{
         createCheckin,
         checkins,
-        spaceId,
       }}>
       {children}
     </CheckinsContext.Provider>

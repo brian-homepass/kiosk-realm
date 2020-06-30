@@ -6,6 +6,7 @@ class Checkin {
     partition,
     mobile,
     email,
+    newProperty = new Date().toISOString(),
     checkinDate = new Date(),
     id = new ObjectId(),
   }) {
@@ -15,6 +16,7 @@ class Checkin {
     this.mobile = mobile;
     this.email = email;
     this.checkinDate = checkinDate;
+    this.newProperty = newProperty;
   }
 
   static schema = {
@@ -27,6 +29,7 @@ class Checkin {
       email: 'string?',
       checkinDate: 'date?',
       userId: 'string?',
+      newProperty: 'string?',
     },
     primaryKey: '_id',
   };
